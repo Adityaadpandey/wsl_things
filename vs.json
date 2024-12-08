@@ -22,8 +22,8 @@
     "*.html": "html"
   },
   "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "tabnine.experimentalAutoImports": true,
+//   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+//   "tabnine.experimentalAutoImports": true,
   "files.exclude": {
     "**/.classpath": true,
     "**/.project": true,
@@ -57,7 +57,7 @@
   "gitlens.advanced.messages": {
     "suppressGitMissingWarning": true
   },
-//   "editor.cursorBlinking": "blink",
+  "editor.cursorBlinking": "expand",
   "git.confirmSync": false,
   "terminal.integrated.defaultProfile.linux": "zsh",
   "workbench.startupEditor": "none",
@@ -85,7 +85,13 @@
     "plaintext": true,
     "markdown": true,
     "python": true,
-    "javascript": true
+    "javascript": true,
+    "typescriptreact": true,
+    "typescript": true,
+    "typescript.tsx": true,
+    "javascript.jsx": true,
+    "javascriptreact": true,
+    "vue": true,
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
@@ -139,7 +145,7 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.largeFileOptimizations": false,
+  "editor.largeFileOptimizations": true,
   "git.ignoreRebaseWarning": true,
   "borderless.autoenable": true,
   "npm.keybindingsChangedWarningShown": true,
@@ -167,7 +173,17 @@
   "window.customTitleBarVisibility": "auto",
   "workbench.colorTheme": "Winter is Coming (Dark Blue)",
   "workbench.colorCustomizations": {
-    "terminal.background": "#00000000"
+    "terminal.background": "#00000000",
+    "terminalCursor.background": "#ffffff",
+    "terminalCursor.foreground": "#ffffff",
+    "terminal.ansiBlack": "#000000",
+    "terminal.ansiBlue": "#82aaff",
+    "terminal.ansiBrightBlack": "#000000",
+    "terminal.ansiBrightBlue": "#82aaff",
+    "terminal.ansiGreen": "#c7c7c7",
+    "terminal.ansiBrightGreen": "#c7c7c7",
+    "terminal.ansiYellow": "#ffcc66",
+    "terminal.ansiBrightYellow": "#ffcc66",
   },
   "workbench.settings.applyToAllProfiles": ["workbench.colorCustomizations"],
   "editor.inlayHints.fontFamily": "Dank Mono, monospace",
@@ -194,7 +210,7 @@
 
 
     "editor.copyWithSyntaxHighlighting": false,
-    "diffEditor.ignoreTrimWhitespace": false,
+    "diffEditor.ignoreTrimWhitespace": true,
     "editor.emptySelectionClipboard": false,
     "workbench.editor.enablePreview": false,
     "window.newWindowDimensions": "inherit",
@@ -208,25 +224,25 @@
     "files.trimFinalNewlines": true,
     "workbench.editor.showTabs": "none",
     "editor.minimap.enabled": false,
-    // "editor.lineNumbers": "off",
-    // "editor.guides.indentation": false,
+    "editor.lineNumbers": "on",
+    "editor.guides.indentation": true,
 
     // Silence the Noise
     "breadcrumbs.enabled": false,
     "scm.diffDecorations": "none",
-    "editor.hover.delay": 1500,
+    // "editor.hover.delay": 1500,
     "editor.hover.enabled": true,
-    "editor.matchBrackets": "never",
-    "workbench.tips.enabled": false,
-    "editor.colorDecorators": false,
-    "git.decorations.enabled": false,
+    "editor.matchBrackets": "near",
+    "workbench.tips.enabled": true,
+    "editor.colorDecorators": true,
+    "git.decorations.enabled": true,
     // "workbench.startupEditor": "none",
-    "editor.lightbulb.enabled": "off",
+    "editor.lightbulb.enabled": "onCode",
     "editor.selectionHighlight": false,
     "editor.overviewRulerBorder": false,
-    "editor.renderLineHighlight": "none",
+    "editor.renderLineHighlight": "line",
     "editor.occurrencesHighlight": "off",
-    "problems.decorations.enabled": false,
+    "problems.decorations.enabled": true,
     "editor.renderControlCharacters": false,
     "editor.hideCursorInOverviewRuler": true,
     "editor.gotoLocation.multipleReferences": "goto",
@@ -235,14 +251,12 @@
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "editor.gotoLocation.multipleImplementations": "goto",
     "editor.gotoLocation.multipleTypeDefinitions": "goto",
-
-    // Typography
     "editor.fontFamily": "Geist Mono, JetBrains Mono, Fira Code",
     "editor.suggestFontSize": 16,
     "editor.suggestLineHeight": 25,
     "terminal.integrated.fontFamily": "MesloLGS NF" ,
 
-    "search.useIgnoreFiles": false,
+    // "search.useIgnoreFiles": false,
     "search.exclude": {
         // Hide everything in /vendor, except the "laravel" and "livewire" folder.
         "**/vendor/{[^l],?[^ai]}*": true,
@@ -267,7 +281,8 @@
         "vue-html": "html",
         "vue": "html",
         "react": "html",
-        "javascript": "html"
+        "javascript": "html",
+        "typescriptreact": "html",
     },
 
 
@@ -328,7 +343,7 @@
     //     "editor.defaultFormatter": "vscode.json-language-features"
     // },
     // "security.workspace.trust.untrustedFiles": "open",
-    // "editor.linkedEditing": true,
+    "editor.linkedEditing": true,
     // "editor.formatOnSave": false,
     // "editor.fontLigatures": false,
     "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
@@ -347,10 +362,8 @@
     },
     "tailwindCSS.experimental.configFile": null,
     "editor.fontWeight": "400",
-    // to be changed
-    "workbench.activityBar.location": "hidden",
     "workbench.statusBar.visible": false,
-    "editor.inlineSuggest.suppressSuggestions": true,
+    "editor.inlineSuggest.suppressSuggestions": false,
     "codesnap.backgroundColor": "#FFC540",
     "codesnap.showLineNumbers": false,
     "codesnap.roundedCorners": true,
@@ -385,5 +398,20 @@
     // "workbench.sideBar.location": "right",
     "material-icon-theme.files.color": "#42a5f5",
     "workbench.tree.enableStickyScroll": false,
-    "window.menuBarVisibility": "compact"
+    "window.menuBarVisibility": "toggle",
+    "terminal.integrated.allowedLinkSchemes": [
+        "file",
+        "http",
+        "https",
+        "mailto",
+        "vscode",
+        "vscode-insiders",
+        "docker-desktop"
+    ],
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "workbench.activityBar.location": "hidden",
+    "git.openRepositoryInParentFolders": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "hediet.vscode-drawio.resizeImages": null,
+    "tabnine.experimentalAutoImports": true
 }
