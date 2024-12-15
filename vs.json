@@ -216,8 +216,8 @@
     "window.newWindowDimensions": "inherit",
     // "editor.multiCursorModifier": "ctrlCmd",
     "files.trimTrailingWhitespace": true,
-    "diffEditor.renderSideBySide": false,
-    "editor.snippetSuggestions": "top",
+    "diffEditor.renderSideBySide": true,
+    "editor.snippetSuggestions": "inline",
     "editor.detectIndentation": false,
     "window.nativeFullScreen": true,
     "files.insertFinalNewline": true,
@@ -232,7 +232,7 @@
     "scm.diffDecorations": "none",
     // "editor.hover.delay": 1500,
     "editor.hover.enabled": true,
-    "editor.matchBrackets": "near",
+    "editor.matchBrackets": "always",
     "workbench.tips.enabled": true,
     "editor.colorDecorators": true,
     "git.decorations.enabled": true,
@@ -299,7 +299,7 @@
         "editor.formatOnSave": true
     },
     "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "vscode.typescript-language-features",
         "editor.formatOnSave": true,
         "editor.autoIndent": "advanced"
 
