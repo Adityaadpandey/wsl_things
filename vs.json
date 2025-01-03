@@ -1,4 +1,5 @@
 {
+  "telemetry.telemetryLevel": "off", // Reduce background processes
   "security.workspace.trust.untrustedFiles": "open",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook",
@@ -7,6 +8,17 @@
     "*.h5": "default",
     "*.xz": "default"
   },
+
+    "editor.maxTokenizationLineLength": 1000, // Prevents slowdowns with very long lines
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/.hg/store/**": true
+    },
+    "workbench.reduceMotion": "on", // Reduces animations for better performance
+    "editor.smoothScrolling": false, // Disable for better performance
+    "workbench.list.smoothScrolling": false,
 
   "notebook.cellToolbarLocation": {
     "default": "right",
@@ -22,14 +34,14 @@
     "*.html": "html"
   },
   "editor.suggestSelection": "first",
-//   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-//   "tabnine.experimentalAutoImports": true,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "files.exclude": {
     "**/.classpath": true,
+    "**/.factorypath": true,
     "**/.project": true,
     "**/.settings": true,
-    "**/.factorypath": true
-  },
+    "**/node_modules": true
+},
   "liveServer.settings.donotShowInfoMsg": true,
   "git.autofetch": true,
   "explorer.confirmDragAndDrop": false,
@@ -38,13 +50,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorSmoothCaretAnimation": "off",
   "editor.mouseWheelZoom": true,
   "editor.wordWrap": "on",
   "appService.showSavePrompt": false,
@@ -61,17 +67,6 @@
   "git.confirmSync": false,
   "terminal.integrated.defaultProfile.linux": "zsh",
   "workbench.startupEditor": "none",
-  "[dart]": {
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "editor.rulers": [80],
-    "editor.selectionHighlight": false,
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
-    "editor.suggestSelection": "first",
-    // "editor.tabCompletion": "onlySnippets",
-    "editor.wordBasedSuggestions": "off",
-    "editor.defaultFormatter": "Dart-Code.dart-code"
-  },
   "editor.cursorSurroundingLines": 1,
   "editor.cursorSurroundingLinesStyle": "all",
   "diffEditor.codeLens": true,
@@ -94,13 +89,14 @@
     "vue": true,
   },
   "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit",
     "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit",
-    "source.organizeImports": "explicit",
+    // "source.organizeImports": "explicit",
     "source.sortImports": "explicit"
   },
   "settingsSync.ignoredSettings": ["editor.fontFamily"],
-  "editor.fontSize": 18,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "editor.renderWhitespace": "none",
@@ -119,7 +115,7 @@
   },
   "terminal.explorerKind": "integrated",
   "terminal.integrated.copyOnSelection": true,
-  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorBlinking": false,
   "terminal.integrated.gpuAcceleration": "on",
   "terminal.integrated.profiles.windows": {
     "PowerShell": {
@@ -153,8 +149,7 @@
     "fetch:command",
     "switch:command",
     "remote-add:command"
-  ],
-  "workbench.productIconTheme": "a-file-icon-vscode-product-icon-theme",
+],
   "editor.autoClosingBrackets": "always",
   "editor.definitionLinkOpensInPeek": true,
   "[scss]": {
@@ -164,6 +159,8 @@
   "workbench.editor.empty.hint": "hidden",
   "notebook.formatOnSave.enabled": true,
   "gitlens.ai.experimental.provider": "openai",
+  "gitlens.currentLine.enabled": true,
+
   "gitlens.ai.experimental.openai.model": "gpt-3.5-turbo-1106",
   "explorer.confirmPasteNative": false,
   "workbench.view.alwaysShowHeaderActions": true,
@@ -171,37 +168,20 @@
   "github.copilot.editor.enableAutoCompletions": true,
   "workbench.editor.editorActionsLocation": "titleBar",
   "window.customTitleBarVisibility": "auto",
-  "workbench.colorTheme": "Winter is Coming (Dark Blue)",
-  "workbench.colorCustomizations": {
-    "terminal.background": "#00000000",
-    "terminalCursor.background": "#ffffff",
-    "terminalCursor.foreground": "#ffffff",
-    "terminal.ansiBlack": "#000000",
-    "terminal.ansiBlue": "#82aaff",
-    "terminal.ansiBrightBlack": "#000000",
-    "terminal.ansiBrightBlue": "#82aaff",
-    "terminal.ansiGreen": "#c7c7c7",
-    "terminal.ansiBrightGreen": "#c7c7c7",
-    "terminal.ansiYellow": "#ffcc66",
-    "terminal.ansiBrightYellow": "#ffcc66",
-  },
+  "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.settings.applyToAllProfiles": ["workbench.colorCustomizations"],
-  "editor.inlayHints.fontFamily": "Dank Mono, monospace",
-  "workbench.iconTheme": "a-file-icon-vscode",
+// "editor.inlayHints.fontFamily": "Dank Mono, monospace",
 
   "js/ts.implicitProjectConfig.checkJs": true,
   "js/ts.implicitProjectConfig.experimentalDecorators": true,
 
 
-  "typescript.validate.enable": true,
+  "typescript.validate.enable": false,
   "javascript.validate.enable": false,
   "typescript.tsserver.enable": true,
   "typescript.tsserver.experimental.enableProjectDiagnostics": false,
   "typescript.tsserver.experimental.enable": true,
   "typescript.tsserver.log": "off",
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -218,7 +198,6 @@
     "files.trimTrailingWhitespace": true,
     "diffEditor.renderSideBySide": true,
     "editor.snippetSuggestions": "inline",
-    "editor.detectIndentation": false,
     "window.nativeFullScreen": true,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
@@ -237,7 +216,7 @@
     "editor.colorDecorators": true,
     "git.decorations.enabled": true,
     // "workbench.startupEditor": "none",
-    "editor.lightbulb.enabled": "onCode",
+    "editor.lightbulb.enabled": "off",
     "editor.selectionHighlight": false,
     "editor.overviewRulerBorder": false,
     "editor.renderLineHighlight": "line",
@@ -304,59 +283,29 @@
         "editor.autoIndent": "advanced"
 
     },
-    "[tailwindcss]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "editor.formatOnSave": true,
+        "editor.autoIndent": "advanced"
     },
-    "[vue]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true
-    },
-    // "[javascriptreact]": {
-    //     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    //     "editor.formatOnSave": true
-    // },
     "prettier.requireConfig": true,
     "prettier.useEditorConfig": false,
-    "explorer.sortOrder": "type",
+    "explorer.sortOrder": "default",
     "prettier.tabWidth": 4,
-    "vetur.format.options.tabSize": 4,
-    // "workbench.tree.indent": 15,
-    // "[html]": {
-    //     "editor.defaultFormatter": "apility.beautify-blade",
-    //     "editor.formatOnSave": true
-    // },
     "editor.wordWrapColumn": 120,
-    // "files.autoSave": "afterDelay",
-    // "[css]": {
-    //     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    //     "editor.formatOnSave": true
-    // },
-
     "editor.quickSuggestions": {
         "strings": true
     },
-    // "[jsonc]": {
-    //     "editor.defaultFormatter": "esbenp.prettier-vscode"
-    // },
-    // "[json]": {
-    //     "editor.defaultFormatter": "vscode.json-language-features"
-    // },
-    // "security.workspace.trust.untrustedFiles": "open",
     "editor.linkedEditing": true,
-    // "editor.formatOnSave": false,
-    // "editor.fontLigatures": false,
     "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
     "diffEditor.wordWrap": "on",
     "notebook.output.wordWrap": true,
-    // "editor.fontSize": 16,
+    "editor.fontSize": 16,
     // "editor.minimap.maxColumn": 250,
     "codesnap.containerPadding": "8em",
     "codesnap.boxShadow": "rgba(0, 0, 0, 0.55) 0px 12px 24px",
-    // "explorer.confirmDelete": false,
     "editor.accessibilitySupport": "off",
     "chat.editor.wordWrap": "on",
-    // "editor.wordWrap": "wordWrapColumn",
     "tailwindCSS.includeLanguages": {
         "plaintext": "html"
     },
@@ -364,9 +313,6 @@
     "editor.fontWeight": "400",
     "workbench.statusBar.visible": false,
     "editor.inlineSuggest.suppressSuggestions": false,
-    "codesnap.backgroundColor": "#FFC540",
-    "codesnap.showLineNumbers": false,
-    "codesnap.roundedCorners": true,
     "editor.padding.top": 16,
     "editor.stickyScroll.enabled": false,
     "editor.lineHeight": 24,
@@ -387,16 +333,11 @@
                 "comment.line"
               ],
               "settings": {
-                "fontStyle": ""
+                "fontStyle": "italic"
               }
             }
           ]
     },
-    "material-icon-theme.saturation": 0,
-    // "workbench.colorTheme": "React Theme",
-    // "workbench.iconTheme": "eq-material-theme-icons-light",
-    // "workbench.sideBar.location": "right",
-    "material-icon-theme.files.color": "#42a5f5",
     "workbench.tree.enableStickyScroll": false,
     "window.menuBarVisibility": "toggle",
     "terminal.integrated.allowedLinkSchemes": [
@@ -409,9 +350,15 @@
         "docker-desktop"
     ],
     "diffEditor.hideUnchangedRegions.enabled": true,
-    "workbench.activityBar.location": "hidden",
+    "workbench.activityBar.location": "bottom",
     "git.openRepositoryInParentFolders": "always",
     "typescript.updateImportsOnFileMove.enabled": "always",
-    "hediet.vscode-drawio.resizeImages": null,
-    "tabnine.experimentalAutoImports": true
+    "workbench.iconTheme": "catppuccin-mocha",
+    "editor.formatOnPaste": true,
+    "tabnine.experimentalAutoImports": true,
+    "editor.autoClosingOvertype": "always",
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "window.newWindowProfile": "Default",
+
+
 }
