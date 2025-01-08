@@ -168,7 +168,7 @@
   "github.copilot.editor.enableAutoCompletions": true,
   "workbench.editor.editorActionsLocation": "titleBar",
   "window.customTitleBarVisibility": "auto",
-  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.colorTheme": "Catppuccin Macchiato",
   "workbench.settings.applyToAllProfiles": ["workbench.colorCustomizations"],
 // "editor.inlayHints.fontFamily": "Dank Mono, monospace",
 
@@ -353,7 +353,7 @@
     "workbench.activityBar.location": "bottom",
     "git.openRepositoryInParentFolders": "always",
     "typescript.updateImportsOnFileMove.enabled": "always",
-    "workbench.iconTheme": "catppuccin-mocha",
+    "workbench.iconTheme": "catppuccin-macchiato",
     "editor.formatOnPaste": true,
     "tabnine.experimentalAutoImports": true,
     "editor.autoClosingOvertype": "always",
