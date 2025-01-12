@@ -2,7 +2,7 @@
   "lsp": {
     "wakatime": {
       "settings": {
-        "api-key": "waka_d56608ed-3b77-4ab4-b889-b72b797f89ae"
+        "api-key": ""  # add your api
       }
     }
   },
