@@ -1,0 +1,458 @@
+/* ===== ENHANCED VS CODE CUSTOM THEME ===== */
+
+/* Code comment style with improved readability */
+.mtk3 {
+    font-family: 'Monaspace Radon', 'JetBrains Mono', monospace !important;
+    font-style: italic !important;
+    color: #00a693 !important;
+    opacity: 0.85 !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.mtk3:hover {
+    opacity: 1 !important;
+}
+
+/* Global font improvements */
+.monaco-editor {
+    font-feature-settings: "liga" 1, "calt" 1 !important;
+    font-variant-ligatures: contextual !important;
+}
+
+/* Code canvas top shadow with enhanced depth */
+.monaco-editor .scroll-decoration {
+    box-shadow:
+        0px 0px 20px rgba(0, 0, 0, .75),
+        0px -2px 8px rgba(0, 0, 0, 0.3) !important;
+    top: -6px !important;
+    transition: box-shadow 0.3s ease !important;
+}
+
+/* Enhanced match text with subtle animation */
+.currentFindMatchInline {
+    background: linear-gradient(90deg, #000 0%, #1a1a1a 100%) !important;
+    border-radius: 3px !important;
+    animation: subtle-pulse 2s ease-in-out infinite !important;
+}
+
+@keyframes subtle-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Enhanced sidebar with improved shadows and transitions */
+.part.sidebar {
+    box-shadow:
+        0px 0px 50px rgba(0, 0, 0, .35),
+        inset -1px 0px 0px rgba(255, 255, 255, 0.05) !important;
+    transition: box-shadow 0.3s ease !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+.part.sidebar:hover {
+    box-shadow:
+        0px 0px 60px rgba(0, 0, 0, .45),
+        inset -1px 0px 0px rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Enhanced File Explorer Selected Item */
+.monaco-list.list_id_1 .monaco-list-row.selected {
+    background: linear-gradient(90deg, #6e437423 0%, #6e437414 100%) !important;
+    opacity: 1 !important;
+    border-top: 1px solid #8a94a8 !important;
+    border-bottom: 1px solid #8a94a8 !important;
+    border-radius: 4px !important;
+    margin: 2px 4px !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+.monaco-list.list_id_1 .monaco-list-row.selected:hover {
+    background: linear-gradient(90deg, #0f0f0f 0%, #2a2a2a 100%) !important;
+    border-color: #9ca6ba !important;
+}
+
+/* Smooth hover effects for non-selected items */
+.monaco-list.list_id_1 .monaco-list-row:not(.selected):hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 4px !important;
+    margin: 2px 4px !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Enhanced chevron with rotation animation */
+.codicon-tree-item-expanded:before {
+    transition: transform 0.2s ease !important;
+}
+
+.monaco-tl-twistie.collapsible:not(.collapsed) .codicon-tree-item-expanded:before {
+    transform: rotate(90deg) !important;
+}
+
+/* Enhanced list item label */
+.monaco-list.list_id_1 .monaco-list-row.selected .label-name {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Hide file explorer action buttons with fade */
+.monaco-workbench .part.sidebar .title-actions .actions-container {
+    opacity: 0 !important;
+    transition: opacity 0.2s ease !important;
+    pointer-events: none !important;
+}
+
+.monaco-workbench .part.sidebar:hover .title-actions .actions-container {
+    opacity: 0.7 !important;
+    pointer-events: auto !important;
+}
+
+/* Enhanced File Explorer Item Label */
+.monaco-tree .monaco-tree-row .label-name,
+.monaco-list .monaco-list-row .monaco-icon-label .label-name {
+    font-family: 'Geist Mono', 'SF Mono', 'Cascadia Code', monospace !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #e8e8e8 !important;
+    transition: color 0.2s ease !important;
+}
+
+.monaco-tree .monaco-tree-row:hover .label-name,
+.monaco-list .monaco-list-row:hover .monaco-icon-label .label-name {
+    color: #ffffff !important;
+}
+
+.explorer-item-edited {
+    font-family: 'Geist Mono', monospace !important;
+    font-size: 11px !important;
+    background: rgba(188, 154, 188, 0.15) !important;
+    border-radius: 4px !important;
+    padding: 2px 4px !important;
+}
+
+/* Enhanced sidebar top shadow */
+.monaco-scrollable-element>.shadow.top {
+    box-shadow:
+        0px 0px 15px rgba(0, 0, 0, .85),
+        0px 2px 4px rgba(0, 0, 0, 0.4) !important;
+    top: -4px !important;
+}
+
+/* Enhanced sidebar title */
+.composite.title {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-items: center !important;
+    padding: 8px 16px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.composite.title h2 {
+    font-weight: 600 !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    color: #bc9abc !important;
+    letter-spacing: 0.5px !important;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Enhanced scroll bar */
+.slider {
+    position: absolute !important;
+    right: 2px !important;
+    width: 3px !important;
+    background: linear-gradient(180deg, #bc9abc 0%, #8a7a8a 100%) !important;
+    left: auto !important;
+    border-radius: 2px !important;
+    transition: width 0.2s ease, opacity 0.2s ease !important;
+    opacity: 0.7 !important;
+}
+
+.slider:hover {
+    width: 8px !important;
+    opacity: 1 !important;
+}
+
+/* Enhanced tooltip with glassmorphism */
+.monaco-editor-hover,
+.monaco-hover {
+    box-shadow:
+        0px 16px 48px rgba(0, 0, 0, .6),
+        0px 0px 0px 1px rgba(255, 255, 255, 0.1),
+        inset 0px 1px 0px rgba(255, 255, 255, 0.2) !important;
+    background: rgba(60, 60, 80, 0.85) !important;
+    backdrop-filter: blur(16px) saturate(1.8) !important;
+    border-radius: 12px !important;
+    border: none !important;
+    outline: none !important;
+    animation: tooltip-appear 0.2s ease-out !important;
+}
+
+@keyframes tooltip-appear {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.monaco-resizable-hover {
+    border: none !important;
+}
+
+/* Enhanced project title area */
+.monaco-workbench .part.titlebar>.titlebar-container>.titlebar-center>.window-title>.command-center .action-item.command-center-center {
+    border: none !important;
+    background: transparent !important;
+    transition: background 0.2s ease !important;
+    border-radius: 8px !important;
+}
+
+.monaco-workbench .part.titlebar>.titlebar-container>.titlebar-center>.window-title>.command-center .action-item.command-center-center:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Enhanced project title positioning */
+.titlebar-left {
+    justify-content: flex-start !important;
+    flex-grow: 0 !important;
+    width: 80px !important;
+}
+
+/* Enhanced search elements */
+.search-label {
+    font-family: 'Geist Mono', monospace !important;
+    font-size: 14px !important;
+    color: #fff !important;
+    display: block !important;
+    font-weight: 500 !important;
+}
+
+/* Hide search and navigation icons */
+.search-icon,
+.codicon-search::before,
+.codicon-arrow-right,
+.codicon-arrow-left {
+    display: none !important;
+}
+
+.titlebar-right>* {
+    display: none !important;
+}
+
+.command-center-center {
+    width: auto !important;
+}
+
+/* Enhanced Command Palette with improved glassmorphism */
+.quick-input-widget {
+    transform: translateY(-50%) !important;
+    top: 50% !important;
+    box-shadow:
+        0px 24px 64px rgba(0, 0, 0, .5),
+        0px 0px 0px 1px rgba(255, 255, 255, 0.1),
+        inset 0px 1px 0px rgba(255, 255, 255, 0.2) !important;
+    padding: 20px 20px 24px 20px !important;
+    background: rgba(60, 60, 80, 0.75) !important;
+    backdrop-filter: blur(20px) saturate(1.8) !important;
+    border-radius: 16px !important;
+    animation: command-palette-appear 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+@keyframes command-palette-appear {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+.quick-input-list,
+.quick-input-list .list_id_6 {
+    min-height: 400px !important;
+    max-height: 500px !important;
+}
+
+/* Enhanced backdrop blur */
+#command-blur {
+    position: fixed !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, .25) !important;
+    top: 0 !important;
+    left: 0 !important;
+    backdrop-filter: blur(12px) !important;
+    z-index: 1000 !important;
+    animation: backdrop-appear 0.2s ease-out !important;
+}
+
+@keyframes backdrop-appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Remove background for lists */
+.monaco-list-rows {
+    background: transparent !important;
+}
+
+/* Enhanced command palette input */
+.quick-input-filter .monaco-inputbox {
+    border-radius: 10px !important;
+    padding: 12px 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    font-family: "Geist Mono", monospace !important;
+    font-size: 16px !important;
+    margin-bottom: 16px !important;
+    transition: all 0.2s ease !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+.quick-input-filter .monaco-inputbox:focus-within {
+    border-color: rgba(188, 154, 188, 0.5) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0px 0px 0px 3px rgba(188, 154, 188, 0.15) !important;
+}
+
+/* Enhanced actions container */
+.quick-input-inline-action-bar .actions-container .action-item {
+    margin-bottom: 16px !important;
+    transition: transform 0.2s ease !important;
+}
+
+.quick-input-inline-action-bar .actions-container .action-item:hover {
+    transform: scale(1.05) !important;
+}
+
+.quick-input-header {
+    align-items: center !important;
+}
+
+/* Enhanced placeholder text */
+.monaco-inputbox input::placeholder {
+    color: rgba(255, 255, 255, .4) !important;
+    font-style: italic !important;
+}
+
+/* Enhanced editor group watermark */
+.editor-group-watermark {
+    max-width: none !important;
+    opacity: 0.6 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.editor-group-watermark:hover {
+    opacity: 0.8 !important;
+}
+
+/* Additional enhancements */
+
+/* Smooth tab transitions */
+.tabs-container .tab {
+    transition: all 0.2s ease !important;
+}
+
+.tabs-container .tab:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Enhanced status bar */
+.part.statusbar {
+    backdrop-filter: blur(8px) !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Enhanced terminal */
+.terminal-wrapper {
+    backdrop-filter: blur(4px) !important;
+}
+
+/* Enhanced breadcrumbs */
+.breadcrumbs-control {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(8px) !important;
+    border-radius: 6px !important;
+    transition: background 0.2s ease !important;
+}
+
+.breadcrumbs-control:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Enhanced minimap */
+.monaco-editor .minimap {
+    opacity: 0.7 !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.monaco-editor .minimap:hover {
+    opacity: 1 !important;
+}
+
+/* Enhanced activity bar */
+.part.activitybar {
+    box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+.activity-bar-item {
+    transition: all 0.2s ease !important;
+}
+
+.activity-bar-item:hover {
+    transform: scale(1.1) !important;
+}
+
+/* Enhanced panel (terminal/problems/output) */
+.part.panel {
+    backdrop-filter: blur(8px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Subtle focus indicators */
+.monaco-editor.focused {
+    box-shadow: inset 0px 0px 0px 1px rgba(188, 154, 188, 0.3) !important;
+}
+
+/* Enhanced context menus */
+.context-view .monaco-menu {
+    backdrop-filter: blur(16px) !important;
+    background: rgba(60, 60, 80, 0.9) !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+.context-view .monaco-menu .monaco-action-bar .action-item {
+    transition: background 0.15s ease !important;
+}
+
+.context-view .monaco-menu .monaco-action-bar .action-item:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 4px !important;
+}
