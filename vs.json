@@ -89,13 +89,13 @@
   "terminal.integrated.defaultProfile.windows": "Command Prompt",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.fontFamily": "MesloLGS NF, Geist Mono, JetBrains Mono",
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontSize": 12,
   "terminal.integrated.lineHeight": 1.2,
   "terminal.integrated.inheritEnv": false,
   "terminal.explorerKind": "both",
   "terminal.integrated.copyOnSelection": true,
-  "terminal.integrated.cursorBlinking": false,
-  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "underline",
   "terminal.integrated.rightClickBehavior": "copyPaste",
   "terminal.integrated.profiles.windows": {
     "PowerShell": {
@@ -148,25 +148,25 @@
   "explorer.fileNesting.expand": true,
 
   // ===== EDITOR CORE SETTINGS =====
-  "editor.fontFamily": "JetBrains Mono, Fira Code, SF Mono, Cascadia Code",
-  "editor.fontSize": 15,
+  "editor.fontFamily": "'JetBrains Mono', 'Fira Code', 'SF Mono', 'Cascadia Code', 'MesloLGS NF', 'Geist Mono', monospace",
+  "editor.fontSize": 14,
   "editor.fontWeight": "400",
   "editor.lineHeight": 1.5,
   "editor.letterSpacing": 0.5,
-  "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
+  "editor.fontLigatures": true, // Enables all common ligatures
   "editor.cursorBlinking": "expand",
-  "editor.cursorSmoothCaretAnimation": "on", // Enable for smoother experience
+  "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorSurroundingLines": 3,
   "editor.cursorSurroundingLinesStyle": "all",
-  "editor.padding.top": 20,
+  "editor.padding.top": 5,
   "editor.padding.bottom": 20,
 
   // ===== EDITOR BEHAVIOR =====
   "editor.accessibilityPageSize": 18,
   "editor.accessibilitySupport": "off",
-  "editor.mouseWheelZoom": true,
-  "editor.wordWrap": "bounded",
-  "editor.wordWrapColumn": 120,
+  "editor.mouseWheelZoom": false,
+  "editor.wordWrap": "on",
+  // "editor.wordWrapColumn": 120,
   // "editor.rulers": [80, 120],
   "editor.autoClosingBrackets": "always",
   "editor.autoClosingOvertype": "always",
@@ -253,7 +253,7 @@
   "workbench.editor.centeredLayoutFixedWidth": true,
   "workbench.editor.editorActionsLocation": "titleBar",
   "workbench.editor.showTabs": "multiple",
-  "workbench.editor.tabSizing": "fit",
+  "workbench.editor.tabSizing": "fixed",
   "workbench.editor.enablePreview": true,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.empty.hint": "hidden",
@@ -263,7 +263,7 @@
   "workbench.tree.indent": 10,
   "workbench.tree.renderIndentGuides": "always",
   "workbench.tree.enableStickyScroll": false,
-  "workbench.list.horizontalScrolling": true,
+  "workbench.list.horizontalScrolling": false,
   "workbench.view.alwaysShowHeaderActions": true,
 
   // ===== WINDOW & APPEARANCE =====
@@ -275,8 +275,8 @@
   "window.newWindowProfile": "Default",
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
-  "workbench.colorTheme": "Ayu Dark",
-  "workbench.iconTheme": "catppuccin-latte",
+  "workbench.colorTheme": "Catppuccin Frappé",
+  "workbench.iconTheme": "symbols",
 
   // ===== CUSTOM THEME INTEGRATION =====
   "workbench.colorCustomizations": {
@@ -300,6 +300,8 @@
           "comment.block",
           "comment.line",
           "keyword",
+          "storage",
+          "variable.language",
           "keyword.control",
           "keyword.operator",
           "storage.type",
@@ -311,7 +313,7 @@
           "support.type.property-name.css"
         ],
         "settings": {
-          "fontStyle": "italic"
+           "fontStyle": "italic"
         }
       },
       {
@@ -341,7 +343,7 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
-    "editor.autoIndent": "advanced"
+    "editor.autoIndent": "advanced",
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -469,8 +471,6 @@
   "npm.keybindingsChangedWarningShown": true,
   "borderless.autoenable": true,
   "bracket-pair-colorizer-2.depreciation-notice": false,
-
-  // ===== PYTHON SPECIFIC =====
   "python.defaultInterpreterPath": "C:\\Users\\adity\\miniconda3\\envs\\yolo\\python.exe",
   "python.analysis.autoImportCompletions": true,
   "python.analysis.fixAll": ["source.unusedImports"],
@@ -513,5 +513,14 @@
     "python.defaultInterpreterPath",
     "vscode_custom_css.imports"
   ],
-  "workbench.settings.applyToAllProfiles": []
+  "workbench.settings.applyToAllProfiles": [],
+  "docker.extension.enableComposeLanguageServer": false,
+  "roo-cline.allowedCommands": [
+    "npm test",
+    "npm install",
+    "tsc",
+    "git log",
+    "git diff",
+    "git show"
+  ]
 }
