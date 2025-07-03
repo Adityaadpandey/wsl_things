@@ -1,95 +1,235 @@
 document.addEventListener('DOMContentLoaded', function() {
+    let observer = null;
+    let isBlurActive = false;
+    let animationFrame = null;
+
+    // Debounce function to prevent excessive calls
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // Enhanced check for command dialog with better retry logic
     const checkElement = setInterval(() => {
         const commandDialog = document.querySelector(".quick-input-widget");
         if (commandDialog) {
-          // Apply the blur effect immediately if the command dialog is visible
-          if (commandDialog.style.display !== "none") {
-            runMyScript();
-          }
-            // Create an DOM observer to 'listen' for changes in element's attribute.
-            const observer = new MutationObserver((mutations) => {
+            console.log("✅ Command dialog found, setting up observer...");
+
+            // Apply blur immediately if visible
+            const isVisible = commandDialog.offsetParent !== null && commandDialog.style.display !== 'none';
+            if (isVisible && !isBlurActive) {
+                runMyScript();
+            }
+
+            // Enhanced mutation observer with better performance
+            observer = new MutationObserver(debounce((mutations) => {
                 mutations.forEach((mutation) => {
                     if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                        if (commandDialog.style.display === 'none') {
+                        const isHidden = commandDialog.style.display === 'none';
+                        const isVisible = commandDialog.offsetParent !== null && commandDialog.style.display !== 'none';
+
+                        if (isHidden && isBlurActive) {
+                            // Command palette is hidden, remove our blur
                             handleEscape();
-                        } else {
-                            // If the .quick-input-widget element (command palette) is in the DOM
-                            // but no inline style display: none, show the backdrop blur.
+                        } else if (isVisible && !isBlurActive) {
+                            // Command palette is visible, add our blur
                             runMyScript();
                         }
                     }
                 });
+            }, 16)); // ~60fps debounce
+
+            observer.observe(commandDialog, {
+                attributes: true,
+                attributeFilter: ['style'] // Only watch style changes
             });
 
-            observer.observe(commandDialog, { attributes: true });
-
-            // Clear the interval once the observer is set
             clearInterval(checkElement);
         } else {
-            console.log("Command dialog not found yet. Retrying...");
+            console.log("⏳ Command dialog not found yet. Retrying...");
         }
-    }, 500); // Check every 500ms
+    }, 300); // Reduced interval for better responsiveness
 
-    // Execute when command palette was launched.
+    // Enhanced keyboard event handling
     document.addEventListener('keydown', function(event) {
-        if ((event.metaKey || event.ctrlKey) && event.key === 'p') {
-            event.preventDefault();
-            runMyScript();
-        } else if (event.key === 'Escape' || event.key === 'Esc') {
-            event.preventDefault();
-            handleEscape();
+        // Command palette shortcuts (Ctrl+Shift+P, Cmd+Shift+P, Ctrl+P, Cmd+P)
+        if ((event.metaKey || event.ctrlKey) &&
+            (event.key === 'p' || event.key === 'P') &&
+            !event.altKey) {
+
+            // Small delay to ensure VS Code has time to show the palette
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    if (!isBlurActive) runMyScript();
+                }, 50);
+            });
         }
     });
 
-    // Ensure the escape key event listener is at the document level
+    // Global escape handler with better performance
     document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' || event.key === 'Esc') {
-            handleEscape();
+        if ((event.key === 'Escape' || event.key === 'Esc') && isBlurActive) {
+            // Let VS Code handle the first escape to close the command palette
+            // We'll handle our blur removal through the mutation observer
+            return;
         }
     }, true);
 
+    // Enhanced blur effect with smooth animations
     function runMyScript() {
+        if (isBlurActive) return; // Prevent duplicate calls
+
         const targetDiv = document.querySelector(".monaco-workbench");
+        if (!targetDiv) {
+            console.warn("Monaco workbench not found");
+            return;
+        }
 
-        // Remove existing element if it already exists
+        // Remove existing blur element
         const existingElement = document.getElementById("command-blur");
-        existingElement && existingElement.remove();
+        if (existingElement) {
+            existingElement.remove();
+        }
 
-        // Create and configure the new element
-        const newElement = document.createElement("div");
-        newElement.setAttribute('id', 'command-blur');
+        // Create enhanced blur backdrop
+        const blurElement = document.createElement("div");
+        blurElement.setAttribute('id', 'command-blur');
 
-        newElement.addEventListener('click', function() {
-            newElement.remove();
+        // Enhanced click handler with animation
+        blurElement.addEventListener('click', function(e) {
+            if (e.target === blurElement) { // Only close if clicking the backdrop
+                handleEscape();
+            }
         });
 
-        // Append the new element as a child of the targetDiv
-        targetDiv.appendChild(newElement);
+        // Add smooth entrance animation
+        blurElement.style.opacity = '0';
+        targetDiv.appendChild(blurElement);
 
-        // Hide the sticky widget
-        const widgets = document.querySelectorAll(".sticky-widget");
-        widgets.forEach((widget) => {
-            widget.style.opacity = 0;
+        // Trigger animation after DOM insertion
+        requestAnimationFrame(() => {
+            blurElement.style.opacity = '1';
         });
 
-        // Hide the tree sticky widget
-        const treeWidget = document.querySelector(".monaco-tree-sticky-container");
-        treeWidget && (treeWidget.style.opacity = 0);
+        // Hide widgets with smooth animation
+        animateWidgets(false);
+
+        isBlurActive = true;
+        console.log("🌟 Blur effect activated");
     }
 
-    // Remove the backdrop blur from the DOM when esc key is pressed.
+    // Enhanced escape handler with smooth animations
     function handleEscape() {
-        const element = document.getElementById("command-blur");
-        element && element.click();
+        if (!isBlurActive) return;
 
-        // Show the sticky widget
-        const widgets = document.querySelectorAll(".sticky-widget");
-        widgets.forEach((widget) => {
-            widget.style.opacity = 1;
-        });
+        const blurElement = document.getElementById("command-blur");
 
-        // Show the tree sticky widget
-        const treeWidget = document.querySelector(".monaco-tree-sticky-container");
-        treeWidget && (treeWidget.style.opacity = 1);
+        if (blurElement) {
+            // Smooth fade out animation
+            blurElement.style.opacity = '0';
+
+            // Remove element after animation completes
+            setTimeout(() => {
+                blurElement.remove();
+            }, 200); // Match CSS transition duration
+        }
+
+        // Show widgets with smooth animation
+        animateWidgets(true);
+
+        isBlurActive = false;
+        console.log("✨ Blur effect deactivated");
     }
+
+    // Enhanced widget animation function
+    function animateWidgets(show) {
+        const widgets = document.querySelectorAll(".sticky-widget");
+        const treeWidget = document.querySelector(".monaco-tree-sticky-container");
+        const minimap = document.querySelector(".monaco-editor .minimap");
+        const scrollbars = document.querySelectorAll(".monaco-scrollable-element > .scrollbar");
+
+        const targetOpacity = show ? '1' : '0';
+        const elements = [...widgets];
+
+        if (treeWidget) elements.push(treeWidget);
+        if (minimap) elements.push(minimap);
+        scrollbars.forEach(scrollbar => elements.push(scrollbar));
+
+        // Cancel any existing animation frame
+        if (animationFrame) {
+            cancelAnimationFrame(animationFrame);
+        }
+
+        // Smooth animation for all elements
+        animationFrame = requestAnimationFrame(() => {
+            elements.forEach(element => {
+                if (element) {
+                    element.style.transition = 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)';
+                    element.style.opacity = targetOpacity;
+                }
+            });
+        });
+    }
+
+    // Enhanced focus management
+    function manageFocus() {
+        const commandInput = document.querySelector(".quick-input-filter input");
+        if (commandInput && isBlurActive) {
+            // Ensure input stays focused
+            commandInput.focus();
+        }
+    }
+
+    // Focus management with debouncing
+    const debouncedFocusManager = debounce(manageFocus, 100);
+
+    // Monitor focus changes when blur is active
+    document.addEventListener('focusin', function() {
+        if (isBlurActive) {
+            debouncedFocusManager();
+        }
+    });
+
+    // Cleanup function for when the page is unloaded
+    window.addEventListener('beforeunload', function() {
+        if (observer) {
+            observer.disconnect();
+        }
+        if (animationFrame) {
+            cancelAnimationFrame(animationFrame);
+        }
+    });
+
+    // Additional enhancement: Handle theme changes
+    const themeObserver = new MutationObserver(debounce(() => {
+        if (isBlurActive) {
+            // Refresh blur effect when theme changes
+            const blurElement = document.getElementById("command-blur");
+            if (blurElement) {
+                // Force redraw to adapt to new theme
+                blurElement.style.display = 'none';
+                requestAnimationFrame(() => {
+                    blurElement.style.display = '';
+                });
+            }
+        }
+    }, 300));
+
+    // Watch for theme changes on the body element
+    const bodyElement = document.body;
+    if (bodyElement) {
+        themeObserver.observe(bodyElement, {
+            attributes: true,
+            attributeFilter: ['class', 'data-theme']
+        });
+    }
+
+    console.log("🚀 Enhanced VS Code Command Palette script loaded");
 });
