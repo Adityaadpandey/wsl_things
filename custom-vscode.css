@@ -1,4 +1,4 @@
-/* ===== ENHANCED VS CODE CUSTOM THEME ===== */
+/* ===== FIXED VS CODE CUSTOM THEME ===== */
 
 /* Code comment style with improved readability */
 .mtk3 {
@@ -19,10 +19,42 @@
     font-variant-ligatures: contextual !important;
 }
 
+/* Enhanced Line Numbers and Gutter Area */
+.monaco-editor .margin {
+    background-color: transparent !important;
+}
+
+.monaco-editor .line-numbers {
+    color: rgba(255, 255, 255, 0.4) !important;
+    font-family: 'Geist Mono', 'SF Mono', monospace !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    transition: color 0.2s ease !important;
+}
+
+.monaco-editor .line-numbers.active-line-number {
+    color: rgba(188, 154, 188, 0.8) !important;
+    font-weight: 500 !important;
+}
+
+.monaco-editor .margin-view-overlays {
+    background: transparent !important;
+}
+
+.monaco-editor .glyph-margin {
+    background: transparent !important;
+    width: 20px !important;
+}
+
+.monaco-editor .margin-view-overlays .current-line {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: none !important;
+}
+
 /* Code canvas top shadow with enhanced depth */
 .monaco-editor .scroll-decoration {
     box-shadow:
-        0px 0px 20px rgba(0, 0, 0, .75),
+        0px 0px 20px rgba(0, 0, 0, 0.75),
         0px -2px 8px rgba(0, 0, 0, 0.3) !important;
     top: -6px !important;
     transition: box-shadow 0.3s ease !important;
@@ -30,18 +62,15 @@
 
 /* Enhanced match text with subtle animation */
 .currentFindMatchInline {
-    background: linear-gradient(90deg, #000 0%, #1a1a1a 100%) !important;
+    background: linear-gradient(90deg, #333333 0%, #1a1a1a 100%) !important;
     border-radius: 3px !important;
     animation: subtle-pulse 2s ease-in-out infinite !important;
 }
 
 @keyframes subtle-pulse {
-
-    0%,
-    100% {
+    0%, 100% {
         opacity: 1;
     }
-
     50% {
         opacity: 0.8;
     }
@@ -50,7 +79,7 @@
 /* Enhanced sidebar with improved shadows and transitions */
 .part.sidebar {
     box-shadow:
-        0px 0px 50px rgba(0, 0, 0, .35),
+        0px 0px 50px rgba(0, 0, 0, 0.35),
         inset -1px 0px 0px rgba(255, 255, 255, 0.05) !important;
     transition: box-shadow 0.3s ease !important;
     backdrop-filter: blur(8px) !important;
@@ -58,13 +87,13 @@
 
 .part.sidebar:hover {
     box-shadow:
-        0px 0px 60px rgba(0, 0, 0, .45),
+        0px 0px 60px rgba(0, 0, 0, 0.45),
         inset -1px 0px 0px rgba(255, 255, 255, 0.08) !important;
 }
 
 /* Enhanced File Explorer Selected Item */
 .monaco-list.list_id_1 .monaco-list-row.selected {
-    background: linear-gradient(90deg, #6e437423 0%, #6e437414 100%) !important;
+    background: linear-gradient(90deg, rgba(110, 67, 116, 0.23) 0%, rgba(110, 67, 116, 0.14) 100%) !important;
     opacity: 1 !important;
     border-top: 1px solid #8a94a8 !important;
     border-bottom: 1px solid #8a94a8 !important;
@@ -75,7 +104,7 @@
 }
 
 .monaco-list.list_id_1 .monaco-list-row.selected:hover {
-    background: linear-gradient(90deg, #0f0f0f 0%, #2a2a2a 100%) !important;
+    background: linear-gradient(90deg, rgba(15, 15, 15, 0.8) 0%, rgba(42, 42, 42, 0.8) 100%) !important;
     border-color: #9ca6ba !important;
 }
 
@@ -140,9 +169,9 @@
 }
 
 /* Enhanced sidebar top shadow */
-.monaco-scrollable-element>.shadow.top {
+.monaco-scrollable-element > .shadow.top {
     box-shadow:
-        0px 0px 15px rgba(0, 0, 0, .85),
+        0px 0px 15px rgba(0, 0, 0, 0.85),
         0px 2px 4px rgba(0, 0, 0, 0.4) !important;
     top: -4px !important;
 }
@@ -187,7 +216,7 @@
 .monaco-editor-hover,
 .monaco-hover {
     box-shadow:
-        0px 16px 48px rgba(0, 0, 0, .6),
+        0px 16px 48px rgba(0, 0, 0, 0.6),
         0px 0px 0px 1px rgba(255, 255, 255, 0.1),
         inset 0px 1px 0px rgba(255, 255, 255, 0.2) !important;
     background: rgba(60, 60, 80, 0.85) !important;
@@ -203,7 +232,6 @@
         opacity: 0;
         transform: translateY(8px) scale(0.95);
     }
-
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -215,14 +243,14 @@
 }
 
 /* Enhanced project title area */
-.monaco-workbench .part.titlebar>.titlebar-container>.titlebar-center>.window-title>.command-center .action-item.command-center-center {
+.monaco-workbench .part.titlebar > .titlebar-container > .titlebar-center > .window-title > .command-center .action-item.command-center-center {
     border: none !important;
     background: transparent !important;
     transition: background 0.2s ease !important;
     border-radius: 8px !important;
 }
 
-.monaco-workbench .part.titlebar>.titlebar-container>.titlebar-center>.window-title>.command-center .action-item.command-center-center:hover {
+.monaco-workbench .part.titlebar > .titlebar-container > .titlebar-center > .window-title > .command-center .action-item.command-center-center:hover {
     background: rgba(255, 255, 255, 0.05) !important;
 }
 
@@ -250,7 +278,7 @@
     display: none !important;
 }
 
-.titlebar-right>* {
+.titlebar-right > * {
     display: none !important;
 }
 
@@ -263,7 +291,7 @@
     transform: translateY(-50%) !important;
     top: 50% !important;
     box-shadow:
-        0px 24px 64px rgba(0, 0, 0, .5),
+        0px 24px 64px rgba(0, 0, 0, 0.5),
         0px 0px 0px 1px rgba(255, 255, 255, 0.1),
         inset 0px 1px 0px rgba(255, 255, 255, 0.2) !important;
     padding: 20px 20px 24px 20px !important;
@@ -279,7 +307,6 @@
         opacity: 0;
         transform: translateY(-50%) scale(0.9);
     }
-
     to {
         opacity: 1;
         transform: translateY(-50%) scale(1);
@@ -297,7 +324,7 @@
     position: fixed !important;
     width: 100vw !important;
     height: 100vh !important;
-    background: rgba(0, 0, 0, .25) !important;
+    background: rgba(0, 0, 0, 0.25) !important;
     top: 0 !important;
     left: 0 !important;
     backdrop-filter: blur(12px) !important;
@@ -309,7 +336,6 @@
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
@@ -355,7 +381,7 @@
 
 /* Enhanced placeholder text */
 .monaco-inputbox input::placeholder {
-    color: rgba(255, 255, 255, .4) !important;
+    color: rgba(255, 255, 255, 0.4) !important;
     font-style: italic !important;
 }
 
@@ -369,8 +395,6 @@
 .editor-group-watermark:hover {
     opacity: 0.8 !important;
 }
-
-/* Additional enhancements */
 
 /* Smooth tab transitions */
 .tabs-container .tab {
